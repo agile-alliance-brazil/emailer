@@ -3,8 +3,29 @@
 class ColorRemover
   def decorate(content)
     content.gsub(
-      %r{<span style='color:#[A-F0-9]{6}'>([^<]*)</span>},
+      %r{<span style='color:#[a-fA-F0-9]{6}'>([^<]*)</span>},
       '                                   \1'
+    ).gsub(
+      %r{<span style="color:#[a-fA-F0-9]{6}">([^<]*)</span>},
+      '                                   \1'
+    ).gsub(
+      %r{<span style='color:#[a-fA-F0-9]{3}'>([^<]*)</span>},
+      '                                \1'
+    ).gsub(
+      %r{<span style="color:#[a-fA-F0-9]{3}">([^<]*)</span>},
+      '                                \1'
+    ).gsub(
+      %r{<span style='color:#[a-fA-F0-9]{6};'>([^<]*)</span>},
+      '                                    \1'
+    ).gsub(
+      %r{<span style="color:#[a-fA-F0-9]{6};">([^<]*)</span>},
+      '                                    \1'
+    ).gsub(
+      %r{<span style='color:#[a-fA-F0-9]{3};'>([^<]*)</span>},
+      '                                 \1'
+    ).gsub(
+      %r{<span style="color:#[a-fA-F0-9]{3};">([^<]*)</span>},
+      '                                 \1'
     )
   end
 end

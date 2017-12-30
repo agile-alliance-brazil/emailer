@@ -14,7 +14,7 @@ class CssInjector
   private
 
   def parse(css)
-    entries = css.scan(/[a-zA-Z\s,]+\{[^\}]+\}/)
+    entries = css.scan(/[a-zA-Z\s,0-9]+\s*\{[^\}]+\}/)
     entries.each_with_object({}) do |entry, styles|
       partial_styles = parse_entry(entry)
       partial_styles.each do |tag, content|
@@ -26,7 +26,7 @@ class CssInjector
   end
 
   def parse_entry(entry)
-    match = entry.match(/^([a-zA-Z\s,]+)\{([^\}]+)\}/)
+    match = entry.match(/^([a-zA-Z\s,0-9]+)\s*\{([^\}]+)\}/)
     tags_to_apply = match[1]
     content = match[2].gsub(/\s*\n\s*/, '').gsub(/:\s*/, ':')
     tags = tags_to_apply.split(',').map(&:strip)
