@@ -47,10 +47,11 @@ delivery.install_on(ActionMailer::Base)
 sender = config[:delivery][:sender]
 subject_template = config[:subject_template]
 body_template = config[:body_template]
-data_set = config[:data_set]
 css = config[:css]
 bcc = config[:bcc]
+mailer = BulkMailer.new(sender, subject_template, body_template, bcc, css)
+
+data_set = config[:data_set]
 parser = CSVParser.new(data_set)
 
-mailer = BulkMailer.new(sender, subject_template, body_template, bcc, css)
 mailer.process(parser.to_attributes)

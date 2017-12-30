@@ -9,7 +9,7 @@ class Letter
   def initialize(headers, body, style_injector, *attachments)
     @recipient = headers[:recipient]
     @sender = headers[:sender]
-    @bcc = headers[:bcc]
+    @bcc = Array(headers[:bcc])
     @subject = headers[:subject]
     @body = body
     @style_injector = style_injector
@@ -23,7 +23,7 @@ class Letter
   end
 
   def bcc?
-    @bcc
+    !@bcc.empty?
   end
 
   def html

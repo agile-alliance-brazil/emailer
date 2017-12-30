@@ -90,7 +90,9 @@ class MailerOptionParser
   def specific_options(opts)
     opts.separator 'Specific options:'
     opts.on('--dry-run', dry_run_message) { @dry_run = true }
-    opts.on('--bcc', bcc_message) { |value| @bcc = value }
+    opts.on('--bcc a@b.com,e@d.com', Array, bcc_message) do |emails|
+      @bcc = emails
+    end
   end
 
   def banner_message
@@ -130,7 +132,8 @@ html version of the email.)
   end
 
   def bcc_message
-    "If you desire every email sent be bcc'ed to another email, specify the \
-address here. Must be a valid email address or will be ignored."
+    "If you desire every email sent be bcc'ed to one of more other emails, \
+specify the addresses here. Must be a valid email addresses or they will be \
+ignored."
   end
 end

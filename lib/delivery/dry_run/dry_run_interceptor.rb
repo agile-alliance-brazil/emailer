@@ -18,8 +18,10 @@ class DryRunInterceptor
   private
 
   def build_header(message)
-    "I would email from '#{message.from.join(', ')}' to \
+    header = "I would email from '#{message.from.join(', ')}' to \
 '#{message.to.join(', ')}' with subject '#{message.subject}'."
+    header += " I would bcc '#{message.bcc}'." if message.bcc
+    header
   end
 
   def build_body(message)
