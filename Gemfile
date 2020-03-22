@@ -10,10 +10,10 @@ def darwin_only(require_as)
   RbConfig::CONFIG['host_os'] =~ /darwin/ ? require_as : false
 end
 
-gem 'actionmailer', '~> 5.0'
+gem 'actionmailer', '~> 5.2', '>= 5.2.4.2'
 gem 'aws-ses', require: 'aws/ses'
 gem 'dotenv'
-gem 'json'
+gem 'json', '>= 2.3.0'
 gem 'rake'
 gem 'redcarpet'
 
@@ -32,5 +32,5 @@ group :development, :test do
 end
 
 group :test do
-  gem 'codeclimate-test-reporter', require: nil
+  gem 'codeclimate-test-reporter', '>= 1.0.8', require: nil
 end
