@@ -15,7 +15,7 @@ gem 'aws-ses', require: 'aws/ses'
 gem 'dotenv'
 gem 'json', '>= 2.3.0'
 gem 'rake'
-gem 'redcarpet'
+gem 'redcarpet', '>= 3.5.1'
 
 group :development, :test do
   gem 'byebug'
