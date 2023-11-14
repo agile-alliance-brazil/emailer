@@ -10,7 +10,7 @@ def darwin_only(require_as)
   RbConfig::CONFIG['host_os'] =~ /darwin/ ? require_as : false
 end
 
-gem 'actionmailer', '~> 5.2', '>= 5.2.4.3'
+gem 'actionmailer', '~> 5.2', '>= 5.2.4.4'
 gem 'aws-ses', require: 'aws/ses'
 gem 'dotenv'
 gem 'json', '>= 2.3.0'
