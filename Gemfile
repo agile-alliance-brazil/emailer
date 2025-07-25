@@ -10,7 +10,7 @@ def darwin_only(require_as)
   RbConfig::CONFIG['host_os'] =~ /darwin/ ? require_as : false
 end
 
-gem 'actionmailer', '~> 5.2', '>= 5.2.4.3'
+gem 'actionmailer', '~> 5.2', '>= 5.2.4.4'
 gem 'aws-ses', require: 'aws/ses'
 gem 'dotenv'
 gem 'json', '>= 2.3.0'
@@ -20,9 +20,9 @@ gem 'redcarpet'
 group :development, :test do
   gem 'byebug'
   gem 'factory_girl', '>= 4.9.0'
-  gem 'guard'
+  gem 'guard', '>= 2.14.2'
   gem 'guard-rspec'
-  gem 'guard-rubocop'
+  gem 'guard-rubocop', '>= 1.4.0'
   gem 'pry'
   gem 'rb-fsevent', require: darwin_only('rb-fsevent')
   gem 'rb-inotify', require: linux_only('rb-inotify')
